@@ -2,13 +2,12 @@ import { type Meta, type StoryObj } from "@storybook/react-vite";
 import { faker } from "@faker-js/faker";
 
 import { ComposedChart } from "./ComposedChart";
-import { css } from "../styled-system/css";
 export default {} satisfies Meta;
 
 const data = faker.helpers.multiple(() => {
   return {
     date: faker.date.recent(),
-    price: faker.number.float(),
+    price: faker.number.float({ min: 0, max: 1000 }),
     volume: faker.number.int(),
   };
 });
@@ -21,17 +20,12 @@ export const Playground: StoryObj = {
   render() {
     return (
       <>
-        {/* <h1
-          className={css({
-            textStyle: "2xl",
-          })}
-        >
-          Composed Chart
-        </h1> */}
         <ComposedChart
           data={data}
-          render={({ Line }) => (
+          render={({ Line, XAxis, YAxis }) => (
             <>
+              <XAxis dataKey="date" tickFormatter={(d) => d.toISOString()} />
+              <YAxis dataKey="price" tickFormatter={(n) => n.toString()} />
               <Line dataKey="price" />
             </>
           )}

@@ -1,17 +1,25 @@
 import { ComposedChart as ReComposedChart } from "recharts";
 import type { UnknownDataPoint } from "./types";
 import { Line } from "./Line";
+import { XAxis } from "./XAxis";
+import { YAxis } from "./YAxis";
 
 export declare namespace ComposedChart {
-  interface Props {
+  interface Props<TPoint extends UnknownDataPoint> {
     /**
      * @todo recharts types are mutable, so we can't assume that the data array is readonly
      */
-    data: UnknownDataPoint[];
-    render: (props: { Line: typeof Line }) => React.ReactNode;
+    data: TPoint[];
+    render: (props: {
+      Line: typeof Line<TPoint>;
+      XAxis: typeof XAxis<TPoint>;
+      YAxis: typeof YAxis<TPoint>;
+    }) => React.ReactNode;
   }
 }
-export function ComposedChart(props: ComposedChart.Props) {
+export function ComposedChart<TPoint extends UnknownDataPoint>(
+  props: ComposedChart.Props<TPoint>
+) {
   return (
     <ReComposedChart
       responsive
@@ -21,7 +29,7 @@ export function ComposedChart(props: ComposedChart.Props) {
         height: "100%",
       }}
     >
-      {props.render({ Line })}
+      {props.render({ Line, XAxis, YAxis })}
     </ReComposedChart>
   );
 }
