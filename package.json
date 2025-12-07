@@ -1,0 +1,10 @@
+{
+  "name": "re-recharts",
+  "version": "0.0.0",
+  "devDependencies": {
+    "recharts": "^3.5.1"
+  },
+  "peerDependencies": {
+    "recharts": "^3.5.1"
+  }
+}
