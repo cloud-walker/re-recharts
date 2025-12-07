@@ -1,4 +1,7 @@
-import { ComposedChart as ReComposedChart } from "recharts";
+import {
+  ComposedChart as ReComposedChart,
+  ResponsiveContainer,
+} from "recharts";
 
 import type { UnknownDataPoint } from "./types";
 import { Line } from "./Line";
@@ -26,15 +29,10 @@ export function ComposedChart<TPoint extends UnknownDataPoint>(
   props: ComposedChart.Props<TPoint>
 ) {
   return (
-    <ReComposedChart
-      responsive
-      data={props.data}
-      style={{
-        width: "100%",
-        height: "100%",
-      }}
-    >
-      {props.render({ Line, Area, Bar, XAxis, YAxis })}
-    </ReComposedChart>
+    <ResponsiveContainer height="100%" width="100%">
+      <ReComposedChart data={props.data} accessibilityLayer>
+        {props.render({ Line, Area, Bar, XAxis, YAxis })}
+      </ReComposedChart>
+    </ResponsiveContainer>
   );
 }
