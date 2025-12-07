@@ -2,11 +2,20 @@
   "name": "re-recharts",
   "version": "0.0.0",
   "devDependencies": {
+    "@faker-js/faker": "^10.1.0",
+    "@pandacss/dev": "^1.6.1",
+    "@storybook/react-vite": "^10.1.4",
     "@types/react": "^19.2.7",
     "react": "^19.2.1",
-    "recharts": "^3.5.1"
+    "react-dom": "^19.2.1",
+    "recharts": "^3.5.1",
+    "storybook": "^10.1.4"
   },
   "peerDependencies": {
     "recharts": "^3.5.1"
+  },
+  "scripts": {
+    "stories": "storybook dev -p 6006",
+    "prepare": "panda codegen"
   }
 }
