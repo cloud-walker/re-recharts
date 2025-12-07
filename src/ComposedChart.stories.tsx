@@ -7,8 +7,8 @@ export default {} satisfies Meta;
 const data = faker.helpers.multiple(() => {
   return {
     date: faker.date.recent(),
-    price: faker.number.float({ min: 0, max: 1000 }),
-    volume: faker.number.int(),
+    price: faker.number.float({ min: 0, max: 10000 }),
+    volume: faker.number.int({ min: 0, max: 5000 }),
   };
 });
 
@@ -22,11 +22,13 @@ export const Playground: StoryObj = {
       <>
         <ComposedChart
           data={data}
-          render={({ Line, XAxis, YAxis }) => (
+          render={({ Line, Area, XAxis, YAxis }) => (
             <>
               <XAxis dataKey="date" tickFormatter={(d) => d.toISOString()} />
               <YAxis dataKey="price" tickFormatter={(n) => n.toString()} />
+
               <Line dataKey="price" />
+              <Area dataKey="volume" />
             </>
           )}
         />
