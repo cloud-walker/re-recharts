@@ -7,5 +7,5 @@ export declare namespace Bar {
   }
 }
 export function Bar<TPoint extends UnknownDataPoint>(props: Bar.Props<TPoint>) {
-  return <ReBar dataKey={props.dataKey} />;
+  return <ReBar dataKey={props.dataKey} isAnimationActive={false} />;
 }

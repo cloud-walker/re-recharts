@@ -9,5 +9,11 @@ export declare namespace Area {
 export function Area<TPoint extends UnknownDataPoint>(
   props: Area.Props<TPoint>
 ) {
-  return <ReArea dataKey={props.dataKey} activeDot={false} />;
+  return (
+    <ReArea
+      dataKey={props.dataKey}
+      activeDot={false}
+      isAnimationActive={false}
+    />
+  );
 }

@@ -9,5 +9,11 @@ export declare namespace Line {
 export function Line<TPoint extends UnknownDataPoint>(
   props: Line.Props<TPoint>
 ) {
-  return <ReLine dataKey={props.dataKey} activeDot={false} />;
+  return (
+    <ReLine
+      dataKey={props.dataKey}
+      activeDot={false}
+      isAnimationActive={false}
+    />
+  );
 }
