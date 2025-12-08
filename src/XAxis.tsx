@@ -13,6 +13,11 @@ export function XAxis<TPoint extends UnknownDataPoint>(
   props: XAxis.Props<TPoint>
 ) {
   return (
-    <ReXAxis dataKey={props.dataKey} tickFormatter={props.tickFormatter} />
+    <ReXAxis
+      axisLine={false}
+      tickLine={false}
+      dataKey={props.dataKey}
+      tickFormatter={props.tickFormatter}
+    />
   );
 }

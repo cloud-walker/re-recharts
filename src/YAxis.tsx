@@ -13,6 +13,11 @@ export function YAxis<TPoint extends UnknownDataPoint>(
   props: YAxis.Props<TPoint>
 ) {
   return (
-    <ReYAxis dataKey={props.dataKey} tickFormatter={props.tickFormatter} />
+    <ReYAxis
+      axisLine={false}
+      tickLine={false}
+      dataKey={props.dataKey}
+      tickFormatter={props.tickFormatter}
+    />
   );
 }
